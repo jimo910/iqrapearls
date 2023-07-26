@@ -1,0 +1,15 @@
+/home/mubarak/Documents/iqrapearls/obj/Debug/net7.0/iqrapearls.csproj.AssemblyReference.cache
+/home/mubarak/Documents/iqrapearls/obj/Debug/net7.0/iqrapearls.GeneratedMSBuildEditorConfig.editorconfig
+/home/mubarak/Documents/iqrapearls/obj/Debug/net7.0/iqrapearls.AssemblyInfoInputs.cache
+/home/mubarak/Documents/iqrapearls/obj/Debug/net7.0/iqrapearls.AssemblyInfo.cs
+/home/mubarak/Documents/iqrapearls/obj/Debug/net7.0/iqrapearls.csproj.CoreCompileInputs.cache
+/home/mubarak/Documents/iqrapearls/bin/Debug/net7.0/iqrapearls
+/home/mubarak/Documents/iqrapearls/bin/Debug/net7.0/iqrapearls.deps.json
+/home/mubarak/Documents/iqrapearls/bin/Debug/net7.0/iqrapearls.runtimeconfig.json
+/home/mubarak/Documents/iqrapearls/bin/Debug/net7.0/iqrapearls.dll
+/home/mubarak/Documents/iqrapearls/bin/Debug/net7.0/iqrapearls.pdb
+/home/mubarak/Documents/iqrapearls/obj/Debug/net7.0/iqrapearls.dll
+/home/mubarak/Documents/iqrapearls/obj/Debug/net7.0/refint/iqrapearls.dll
+/home/mubarak/Documents/iqrapearls/obj/Debug/net7.0/iqrapearls.pdb
+/home/mubarak/Documents/iqrapearls/obj/Debug/net7.0/iqrapearls.genruntimeconfig.cache
+/home/mubarak/Documents/iqrapearls/obj/Debug/net7.0/ref/iqrapearls.dll
