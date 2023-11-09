@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "H1KD2uEL2LV6kfdESMPDSmNkTfvMMoHua1ZG+nGHICZn07/gMWGXvbIoNvjULkO6dYaTNIAS+i3IgZwOPXKf3w==",
+  "success": false,
+  "projectFilePath": "/home/mubarak/Documents/ClubMembershipApplication-master/FieldValidatorAPI/FieldValidatorAPI.csproj",
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "NU1301",
+      "level": "Error",
+      "message": "Unable to load the service index for source https://api.nuget.org/v3/index.json.",
+      "libraryId": "NETStandard.Library"
+    }
+  ]
+}
