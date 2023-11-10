@@ -19,7 +19,7 @@ using IqraPearls.DataDbContext;
 
         var context = new IqraDbContext();
         var ProductReviewExist=  context.Reviews.FirstOrDefault(a => a.ProductId==prodReviewDto.ProductId && a.CustomerId== prodReviewDto.CustomerId);
-        var productPreviewExist = context.PReviews.FirstOrDefault()(a => a.ProductId==prodReviewDto.ProductId );
+        var productPreviewExist = context.PReviews.FirstOrDefault(a => a.ProductId==prodReviewDto.ProductId );
         if (ProductReviewExist == null){
 
             Review review = new Review{
@@ -35,9 +35,7 @@ using IqraPearls.DataDbContext;
             context.SaveChanges();
       
         }
-        if(productPreviewExist != null){
-          productPreviewExist.
-        }
+   
 
       }
 
@@ -51,7 +49,7 @@ using IqraPearls.DataDbContext;
 
            }else{
 
-                return (double)ProductReviewExist.ReviewValue; 
+                return (double)ProductReviewExist.ReviewValue; //ProductReviewExist.NoOfReveiws;
 
            }
 

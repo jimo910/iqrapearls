@@ -12,6 +12,8 @@ public class IqraDbContext : DbContext
     public DbSet<Review> Reviews{get; set;}
     public DbSet<Preview> PReviews{get; set;}
     public DbSet<Comment> Comments{get; set;}
+    public DbSet<Cart> Carts{get; set;}
+     public DbSet<Wishlist> Wishlists{get; set;}
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
