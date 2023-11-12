@@ -41,7 +41,7 @@ using IqraPearls.DataDbContext;
         }
     
 
-     static string GenerateSalt()
+      static string GenerateSalt()
     {
         byte[] salt = new byte[16]; // 16 bytes = 128 bits
         using (var rng = new RNGCryptoServiceProvider())
@@ -52,7 +52,7 @@ using IqraPearls.DataDbContext;
     }
 
     // Hash the password with the salt
-    static string HashPassword(string password, string salt)
+    public   string HashPassword(string password, string salt)
     {
         byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
         byte[] saltBytes = Convert.FromBase64String(salt);

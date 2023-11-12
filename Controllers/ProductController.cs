@@ -256,6 +256,83 @@ public ActionResult UpdateProductComment (int CommentId, [FromBody] commentDto n
 
 
 
+ [HttpPost("IqraPearls/AddProductToCart")]
+public IActionResult AddProductToCart ( [FromBody]  CartDto  cartdto)
+{
+          Cartd cartd = new Cartd();
+       bool isProductedCarted = cartd.AddProductToCart(cartdto);
+       if(isProductedCarted){
+            return Ok("Product added to Cart.");
+       }else{
+        return BadRequest("Product not added to cart");
+       }
+         
+
+
+}
+
+
+
+
+
+[HttpDelete("IqraPearl/DeleteProductFromCart")]
+    public IActionResult DeleteProductFromCart(int CartProductId)
+    { 
+        
+         Cartd cartd = new Cartd();
+       bool isDone =  cartd.RemoveProductFromCart(CartProductId);
+        if (!(isDone))
+        {
+            return NotFound(); // Return a 404 Not Found if the item doesn't exist.
+        }
+
+       
+        return NoContent(); // Return a 204 No Content on successful deletion.
+    }
+
+ [HttpPut("IqraPearls/UpdateProductCartQuantity")]
+public ActionResult UpdateProductCartQuantity (int CartProductId, int Quantity ){
+
+  Cartd cartd = new Cartd();
+  bool isUpdated =  cartd.UpdateProductCartQuantity(CartProductId, Quantity);
+  if(isUpdated){
+    return Ok();
+
+  }else{
+    return BadRequest("Error Updating Quantity.");
+  }
+}
+
+
+
+ [HttpPost("IqraPearls/AddProductToWishList")]
+public IActionResult AddProductToWishList( [FromBody]  WishlistDto  cartdto)
+{
+          WishList wishlist = new WishList();
+       bool isProductaddwishlist =  wishlist.AddProductToWishList(cartdto);
+       if(isProductaddwishlist){
+            return Ok("Product added to Wishlist");
+       }else{
+        return BadRequest("Product not added to Wishlist");
+       }
+
+}
+
+[HttpDelete("IqraPearl/DeleteProductFromWishList")]
+    public IActionResult DeleteProductFromWishlist(int wishlistProductId)
+    { 
+        
+        WishList wishlist = new WishList();
+       bool isDone = wishlist.RemoveProductFromWishlist( wishlistProductId);
+        if (!(isDone))
+        {
+            return NotFound(); // Return a 404 Not Found if the item doesn't exist.
+        }
+
+       
+        return NoContent(); // Return a 204 No Content on successful deletion.
+    }
+
 }
 
 }

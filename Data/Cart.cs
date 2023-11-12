@@ -14,7 +14,7 @@ using IqraPearls.DataDbContext;
     public class Cartd{
 
 
-            public bool AddroductToCart(CartDto newCartDto)
+            public bool AddProductToCart(CartDto newCartDto)
             {
 
                 
@@ -42,19 +42,21 @@ using IqraPearls.DataDbContext;
                 var CartTBRemoved = CartContext.FirstOrDefault(a => a.Id ==CartProductId);
                 if(CartTBRemoved != null){
                          context.Remove(CartTBRemoved);
+                         context.SaveChanges();
                         return true;
                 }
               
         return false;
     }
 
-    public bool updateProductQuantity (int CartProductId, int Quantity){
+    public bool UpdateProductCartQuantity (int CartProductId, int Quantity){
                var context = new IqraDbContext();
                 var CartContext = context.Carts;
                 var CartTBUpdated = CartContext.FirstOrDefault(a => a.Id ==CartProductId);
                 if(CartTBUpdated != null){
                         
                         CartTBUpdated.Quantity = Quantity;
+                        context.SaveChanges();
                         return true;
                 }
               

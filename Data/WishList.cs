@@ -14,7 +14,7 @@ using IqraPearls.DataDbContext;
     public class WishList{
 
 
-            public static bool AddProductToWishList(WishlistDto newWishlistDto)
+            public  bool AddProductToWishList(WishlistDto newWishlistDto)
             {
                   var context = new IqraDbContext();
                   var WishlistContext = context.Wishlists;
@@ -25,23 +25,23 @@ using IqraPearls.DataDbContext;
                   };
                   WishlistContext.Add(newWishlist);
                   context.SaveChanges();
-        return true;
+                         return true;
             }
-        return false;
-            }
+                return false;
+    }
 
 
-            public static bool RemoveProductFromWishlist( int wishlistProductId){
+            public  bool RemoveProductFromWishlist( int wishlistProductId){
 
                 var context = new IqraDbContext();
                 var WishlistContext = context.Wishlists;
                 var WishlistTBRemoved = WishlistContext.FirstOrDefault(a => a.Id ==wishlistProductId);
                 if(WishlistTBRemoved != null){
                          context.Remove(WishlistTBRemoved );
-                        return true;
+                         return true;
                 }
               
-                return false;
+                 return false;
             }
 
     public static  void MoveProductToCart(int wishlistProductId){
