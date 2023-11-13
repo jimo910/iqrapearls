@@ -5,7 +5,7 @@ using System.Text;
 using System.Globalization;
 using System.Threading.Tasks;
 using System.Xml.Linq;
-
+using IqraPearls.Dtos;
 
 namespace IqraPearls.Model{
 
@@ -22,6 +22,9 @@ namespace IqraPearls.Model{
            public string ImageUrl{get; set;}
            public string AddressCity{ get; set; }
            public string PostCode{ get; set; }
+           public List <Product> Tosell {get; set;}
+           public List <OrderDto> productCarted{get; set;}
+           public List <CartDto> ReturnRequest {get; set;}
 
         }
 }

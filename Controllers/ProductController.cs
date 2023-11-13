@@ -10,7 +10,7 @@ using IqraPearls.DataDbContext;
 using IqraPearls.Data;
 using Microsoft.AspNetCore.Hosting;
 using IqraPearls.StaticMethods;
-
+using IqraPearls.Enums;
 namespace IqraPearls.Controllers{
 
 

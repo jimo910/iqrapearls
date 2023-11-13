@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace IqraPearls.Model
+namespace IqraPearls.Enums
 {
    public class boolEnum
     {

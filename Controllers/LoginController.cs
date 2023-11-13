@@ -28,7 +28,7 @@ public class LoginController : ControllerBase
     }
 
 
-[HttpGet("IqraPearls/GetProduct")]
+[HttpGet("IqraPearls/GetCustomer")]
   public Customers Customer( string emailaddress, string providedPassword){
         LoginUser logUser = new LoginUser();
         Customers CUST = new Customers();
@@ -37,6 +37,14 @@ public class LoginController : ControllerBase
 }
 
 
+
+[HttpGet("IqraPearls/GetSeller")]
+  public Sellers Seller( string emailaddress, string providedPassword){
+        LoginSeller logseller = new LoginSeller();
+        Sellers SELLER = new Sellers();
+        SELLER = logseller.Login(emailaddress, providedPassword);
+        return SELLER;
+}
 
 
 }

@@ -16,11 +16,10 @@ using IqraPearls.DataDbContext;
 
             public bool AddProductToCart(CartDto newCartDto)
             {
-
-                
                   var context = new IqraDbContext();
                   var CartContext = context.Carts;
-        if((context.Customerss.FirstOrDefault(a => a.Id == newCartDto.CustomerId)) != null){
+                  var Customer  = (context.Customerss.FirstOrDefault(a => a.Id == newCartDto.CustomerId)); 
+             if(Customer!= null){
                   Cart newCart = new Cart {
                         ProductId = newCartDto.ProductId,
                         CustomerId = newCartDto.CustomerId,

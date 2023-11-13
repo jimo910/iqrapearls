@@ -7,7 +7,7 @@ using IqraPearls.FieldValidators;
 using IqraPearls.Dtos;
 using IqraPearls.Model;
 using IqraPearls.DataDbContext;
-
+using IqraPearls.Enums;
  namespace IqraPearls.Data{
 
     public class  ProductComment{

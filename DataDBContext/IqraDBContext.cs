@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using  IqraPearls.Model;
+using IqraPearls.Dtos;
 
 namespace IqraPearls.DataDbContext{ 
 
@@ -13,7 +14,9 @@ public class IqraDbContext : DbContext
     public DbSet<Preview> PReviews{get; set;}
     public DbSet<Comment> Comments{get; set;}
     public DbSet<Cart> Carts{get; set;}
-     public DbSet<Wishlist> Wishlists{get; set;}
+    public DbSet<Wishlist> Wishlists{get; set;}
+    public DbSet<Order> Orders{get; set;}
+
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -29,7 +32,16 @@ public class IqraDbContext : DbContext
                  .HasMany(p => p.ImageUrlList)
                  .WithOne(pi => pi.Product)
                  .HasForeignKey(pi => pi.ProductId);
+                 
+                 modelBuilder.Entity<CartDto>().HasNoKey();
+                 modelBuilder.Entity<OrderDto>().HasNoKey();
+                 modelBuilder.Entity<Sellers>().Ignore(e => e.ReturnRequest);
+                 modelBuilder.Entity<Sellers>().Ignore(e => e.productCarted);
+                 modelBuilder.Entity<Customers>().Ignore(e => e.ListofProductOrdered);
+                 modelBuilder.Entity<Customers>().Ignore(e => e.ListofProductToReturned);
     }
+
+   
 
     
 
