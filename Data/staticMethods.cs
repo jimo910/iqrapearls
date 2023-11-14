@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using IqraPearls.DataDbContext;
 using System.Security.Cryptography;
 using System.Text;
+using IqraPearls.Dtos;
 
 namespace IqraPearls.StaticMethods{
 
@@ -42,6 +43,54 @@ public  class staticMethodsClass{
             byte[] hash = pbkdf2.GetBytes(32); // 32 bytes = 256 bits
             return Convert.ToBase64String(hash);
         }
+    }
+
+    public static int returnProductId( Guid OrderNumber, int ProductIdonOrder){
+
+        int ProductId= 1013725;
+        var context = new IqraDbContext();
+        var OrderExist = context.Orders.FirstOrDefault (a => a.OrderNumber == OrderNumber);
+        if(OrderExist != null){
+            if( OrderExist.ListofProductOrdered.Count > ProductIdonOrder -1){
+            ProductId = OrderExist.ListofProductOrdered[ProductIdonOrder].ProductId;
+            }
+        }
+
+        return ProductId;
+    }
+
+    public static int returnSellersId( Guid OrderNumber, int ProductIdonOrder){
+
+        int SellersId=  1013725;
+        var context = new IqraDbContext();
+        var OrderExist = context.Orders.FirstOrDefault (a => a.OrderNumber == OrderNumber);
+        if(OrderExist != null){
+            if(OrderExist.ListOfSellers.Count > ProductIdonOrder-1){
+            SellersId = OrderExist.ListOfSellers[ProductIdonOrder].Id;
+            }
+        }
+
+        return SellersId;
+    }
+
+    public static  List<ReturnRequestProductQuantityDto> returnProductQuantity (Guid OrderNumber){
+        List<ReturnRequestProductQuantityDto> toreturn = new List<ReturnRequestProductQuantityDto>();
+        var context = new IqraDbContext();
+        var SellerReturnRequest = context.SellerReturnRequestTable;
+        var SellerReturn = SellerReturnRequest.Where(e=> e.OrderNumber == OrderNumber).ToList();
+        
+        if(SellerReturn != null){
+        foreach( var Sellerreturn in SellerReturn){
+            ReturnRequestProductQuantityDto newReturnRequestDto = new ReturnRequestProductQuantityDto{
+                Quantity = Sellerreturn.QuantityToReturn,
+                ProductIdonOrder =  Sellerreturn.ProductIdToReturn
+            };
+
+            toreturn.Add(newReturnRequestDto);
+            }
+        }
+    
+        return toreturn;
     }
 
 }

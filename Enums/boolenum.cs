@@ -10,7 +10,9 @@ namespace IqraPearls.Enums
         { 
             TRUE,
             FALSE,
-            NAN
+            NAN,
+            NULL,
+            EMPTY
         }
     }
 }

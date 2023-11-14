@@ -15,7 +15,8 @@ namespace IqraPearls.Model{
            public string ProductDescription{get; set;}
            public double  Price{get; set;}
            public string  Category{get; set;}
-         public List<ProductImage> ImageUrlList { get; set; } 
+           public List<ProductImage> ImageUrlList { get; set; } 
+           public ICollection<ProductRequestRelationship> PRRelations{get; set;}
            public int SellersId{get; set;}
            public Sellers sellers { get; set;}
            public Review review {get; set;}

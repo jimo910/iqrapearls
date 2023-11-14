@@ -24,7 +24,7 @@ namespace IqraPearls.Model{
            public string PostCode{ get; set; }
            public List <Product> Tosell {get; set;}
            public List <OrderDto> productCarted{get; set;}
-           public List <CartDto> ReturnRequest {get; set;}
+           public List < SellerReturnRequestModel> ReturnRequest {get; set;}
 
         }
 }
