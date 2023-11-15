@@ -12,7 +12,7 @@ using IqraPearls.StaticMethods;
 
  namespace IqraPearls.Data{
 
-    public class  ReturnRequest{
+    public class ReturnRequest{
 
         private List <ReturnRequestProductQuantityDto> returnProductQuantity;
         private List <ProductRequestRelationship> ListProductId ; 
@@ -91,6 +91,7 @@ using IqraPearls.StaticMethods;
         return false;
 
         }
+        
         public IEnumerable<ReturnRequestDto> GetCustomerReturnRequest(int CustomerId){
 
             var context = new IqraDbContext();

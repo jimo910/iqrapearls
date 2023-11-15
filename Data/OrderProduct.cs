@@ -15,7 +15,7 @@ using IqraPearls.DataDbContext;
         public int _customerId ;
         private  Guid  _orderNumber;
         public List<Cart> CustomerCart = new List<Cart>();
-        public List<Sellers> ListOfSellers = new List<Sellers>();
+     //   public List<SellerOrderRelationship> ListOfSellers = new List<SellerOrderRelationship>();
 
         public OrderProduct(int CustomerId){
                 _customerId = CustomerId;
@@ -45,16 +45,19 @@ using IqraPearls.DataDbContext;
                         Quantity = cartedProduct.Quantity,
                         isPaid = false
                     };
+                   
                     Product prods =context.Products.FirstOrDefault( a=> a.Id == cartedProduct.ProductId);
                     Sellers seller =  context.Sellerss.FirstOrDefault(a => a.Id== prods.SellersId);
-                    ListOfSellers.Add(seller);
-                    seller.productCarted.Add(_orderDto);
+                     SellerOrderRelationship sellerOrderRelations = new SellerOrderRelationship{OrderNumber =_orderNumber, Sellers = seller, SellersId = prods.SellersId };
+                   // ListOfSellers.Add(SellerOrderRelationship);
+                   // seller.productCartedFromStore.Add(sellerOrderRelations);
+                    context.SellerOrderTable.Add(sellerOrderRelations);
                     context.SaveChanges();
                 }
 
             Order order = new Order{
                 OrderNumber = _orderNumber,
-                ListOfSellers = this.ListOfSellers,
+               // ListOfSellers = this.ListOfSellers,
                 ListofProductOrdered = CustomerCart,
                 isPaid = false,
                 CustomerId = _customerId
@@ -66,19 +69,31 @@ using IqraPearls.DataDbContext;
         }
 
        
-       public Order getOrder(Guid OrderNumber){
+       public static  Order getOrder(Guid OrderNumber){
 
                 var context = new IqraDbContext();
                 Order Getorder = context.Orders.FirstOrDefault( a => a.OrderNumber ==OrderNumber);
-               
                     return Getorder;              
 
        }
 
+       public static bool CancelOrder (Guid OrderNumber){
 
+            var context = new IqraDbContext();
+            var SellerOrderrelations = context.SellerOrderTable;
+            var OrderTable = context.Orders;
+            var sellerOrderToDelete =  SellerOrderrelations.Where(a=>  a.OrderNumber == OrderNumber).ToList();
+            var OrderExist = OrderTable.FirstOrDefault( a=> a.OrderNumber== OrderNumber);
+            
 
+            if(sellerOrderToDelete.Count >0 && OrderExist != null){
+                SellerOrderrelations.RemoveRange(sellerOrderToDelete);  
+                OrderTable.Remove(OrderExist);
+                return true;
+       }
 
-
+        return false;
+    }
 
     }
 

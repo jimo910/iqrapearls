@@ -23,8 +23,8 @@ namespace IqraPearls.Model{
            public string AddressCity{ get; set; }
            public string PostCode{ get; set; }
            public List <Product> Tosell {get; set;}
-           public List <OrderDto> productCarted{get; set;}
-           public List < SellerReturnRequestModel> ReturnRequest {get; set;}
+           public List <SellerOrderRelationship> productCartedFromStore{get; set;}
+           public List <SellerReturnRequestModel> ReturnRequest {get; set;}
 
         }
 }

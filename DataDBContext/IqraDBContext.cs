@@ -18,6 +18,7 @@ public class IqraDbContext : DbContext
     public DbSet<Order> Orders{get; set;}
     public DbSet<ReturnRequestModel> ReturnRequestTable {get; set;}
     public DbSet<SellerReturnRequestModel> SellerReturnRequestTable {get; set;}
+    public DbSet<SellerOrderRelationship> SellerOrderTable{get; set;}
 
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -38,7 +39,6 @@ public class IqraDbContext : DbContext
                  modelBuilder.Entity<CartDto>().HasNoKey();
                  modelBuilder.Entity<OrderDto>().HasNoKey();
                  modelBuilder.Entity<List<int>>().HasNoKey();
-                 modelBuilder.Entity<Sellers>().Ignore(e => e.productCarted);
                  modelBuilder.Entity<Customers>().Ignore(e => e.ListofProductOrdered);
                  modelBuilder.Entity<Customers>().Ignore(e => e.ListofProductToReturned);
 
@@ -54,6 +54,21 @@ public class IqraDbContext : DbContext
         .HasOne(sc => sc._ReturnRequest)
         .WithMany(c => c.PRRelations)
         .HasForeignKey(sc => sc. ReturnRequestModelId);
+
+
+        modelBuilder.Entity<SellerOrderRelationship>()
+        .HasKey(sc => new { sc.OrderId, sc.SellersId });
+
+        modelBuilder.Entity<SellerOrderRelationship>()
+        .HasOne(sc => sc.Orders)
+        .WithMany(s => s.ListOfSellers)
+        .HasForeignKey(sc => sc.OrderId);
+
+     modelBuilder.Entity<SellerOrderRelationship>()
+        .HasOne(sc => sc.Sellers)
+        .WithMany(c => c.productCartedFromStore)
+        .HasForeignKey(sc => sc. SellersId);
+  
   
     }
 

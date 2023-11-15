@@ -66,7 +66,7 @@ public  class staticMethodsClass{
         var OrderExist = context.Orders.FirstOrDefault (a => a.OrderNumber == OrderNumber);
         if(OrderExist != null){
             if(OrderExist.ListOfSellers.Count > ProductIdonOrder-1){
-            SellersId = OrderExist.ListOfSellers[ProductIdonOrder].Id;
+            SellersId = OrderExist.ListOfSellers[ProductIdonOrder].SellersId;
             }
         }
 

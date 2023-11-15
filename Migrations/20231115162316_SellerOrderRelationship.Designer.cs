@@ -3,6 +3,7 @@ using System;
 using IqraPearls.DataDbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IqraPearls.Migrations
 {
     [DbContext(typeof(IqraDbContext))]
-    partial class IqraDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231115162316_SellerOrderRelationship")]
+    partial class SellerOrderRelationship
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -338,7 +341,7 @@ namespace IqraPearls.Migrations
 
                     b.HasIndex("SellersId");
 
-                    b.ToTable("SellerOrderTable");
+                    b.ToTable("SellerOrderRelationship");
                 });
 
             modelBuilder.Entity("IqraPearls.Model.SellerReturnRequestModel", b =>

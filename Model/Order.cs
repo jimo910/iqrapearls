@@ -13,7 +13,7 @@ namespace IqraPearls.Model{
 
           public int Id{get; set;}
           public Guid OrderNumber{get; set;}
-          public  List<Sellers> ListOfSellers {get; set;}
+          public  List<SellerOrderRelationship> ListOfSellers {get; set;}
           public List<Cart> ListofProductOrdered{get; set;}
           public  bool isPaid{get; set;}
           public int CustomerId{get; set;}
