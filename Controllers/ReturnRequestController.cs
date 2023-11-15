@@ -31,7 +31,7 @@ public IEnumerable<ReturnRequestDto> GetCustomerReturnRequest(int CustomerId){
 
 }
 
-
+/*
 [HttpPost("IqraPearls/PostReturnReques")]
 public IActionResult PostReturnRequest( [FromBody] ReturnRequestDto newReturnRequestDto)
 {
@@ -48,7 +48,7 @@ public IActionResult PostReturnRequest( [FromBody] ReturnRequestDto newReturnReq
    }else{
     return Ok("Return Requested Posted");
    }
-}
+}*/
 
 
 
